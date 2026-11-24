@@ -1,0 +1,412 @@
+/* VoxelSpase v0.9 — OneSpase credit in the splash, black & white logo at the bottom */
+.splash-status {
+  bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+}
+.sp-credit {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: #94a5c4;
+  font-size: 13.5px;
+  letter-spacing: 0.3px;
+  animation: sp-fade 0.6s ease-out 2.3s both;
+}
+.sp-credit img {
+  width: 26px;
+  height: 26px;
+  display: block;
+  opacity: 0.92;
+}
+
+/* ===== v0.9 additions ===== */
+
+/* light theme: same variables, light values */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f3f5fb;
+  --rail: #e8ecf4;
+  --side: #ffffff;
+  --surface: #ffffff;
+  --surface2: #eef2f9;
+  --line: #d9e0ec;
+  --muted: #5b6b86;
+  --text: #111827;
+  --violet: #7c3aed;
+  --lilac: #6d28d9;
+  --blue: #0284c7;
+  --green: #059669;
+  --red: #dc2626;
+  --shadow: 0 20px 60px #1e293b22;
+  --cl-row-active: #e4dcff;
+  --cl-row-hover: #f0ecff;
+}
+:root[data-theme='light'] body,
+:root[data-theme='light'] {
+  background: var(--bg);
+}
+:root[data-theme='light'] .st-profile {
+  background: linear-gradient(135deg, #ede9fe 0%, #ffffff 75%);
+  box-shadow: 0 12px 30px #1e293b14;
+}
+:root[data-theme='light'] .st-row {
+  border-bottom-color: #0000000d;
+}
+:root[data-theme='light'] .st-switch {
+  background: #cbd5e1;
+}
+:root[data-theme='light'] .st-bubble.them {
+  background: #eef2f9;
+  color: #111827;
+}
+:root[data-theme='light'] .st-preview {
+  background: #f7f8fc;
+}
+:root[data-theme='light'] .st-field input,
+:root[data-theme='light'] .st-field textarea,
+:root[data-theme='light'] .st-field select {
+  background: #ffffff;
+}
+:root[data-theme='light'] .splash {
+  background: #f3f5fb;
+}
+:root[data-theme='light'] .splash .sp-word span {
+  background: linear-gradient(120deg, #1e1b4b 0%, #6d28d9 55%, #0284c7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+:root[data-theme='light'] .splash-status,
+:root[data-theme='light'] .sp-credit {
+  color: #5b6b86;
+}
+
+/* theme picker */
+.th-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.th-opt {
+  border: 0;
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 16px;
+  padding: 10px;
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  outline: 2px solid transparent;
+}
+.th-opt.on {
+  outline-color: var(--violet);
+}
+.th-swatch {
+  width: 100%;
+  height: 58px;
+  border-radius: 12px;
+  display: block;
+  box-shadow: inset 0 0 0 1px #ffffff1a;
+}
+.th-dark { background: linear-gradient(135deg, #0c1326, #19233c); }
+.th-night { background: linear-gradient(135deg, #050611, #16162e); }
+.th-light { background: linear-gradient(135deg, #ffffff, #dfe5f1); box-shadow: inset 0 0 0 1px #00000014; }
+
+/* premium */
+.st-pill {
+  font-style: normal;
+  align-self: flex-start;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(90deg, #7c3aed, #d97706);
+  margin-top: 4px;
+}
+.pr-card {
+  background: linear-gradient(160deg, #2b1f5e 0%, #19233c 70%);
+  border-radius: 22px;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 16px 40px #050812a8;
+}
+:root[data-theme='light'] .pr-card {
+  background: linear-gradient(160deg, #ede9fe 0%, #ffffff 75%);
+  box-shadow: 0 12px 30px #1e293b14;
+}
+.pr-kicker {
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--lilac);
+  font-weight: 700;
+}
+.pr-card h3 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+}
+.pr-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.pr-price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 6px;
+}
+.pr-price s {
+  color: var(--muted);
+  font-size: 18px;
+}
+.pr-price b {
+  font-size: 34px;
+  font-weight: 800;
+}
+.pr-off {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #fff;
+  background: #059669;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+.pr-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.pr-active {
+  font-size: 13.5px;
+  color: var(--green);
+  font-weight: 600;
+  margin-top: 4px;
+}
+.st-save.ghost {
+  background: transparent;
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.st-about-card {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 26px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.st-about-card h3 {
+  margin: 8px 0 0;
+  font-size: 22px;
+}
+.st-about-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.st-about-card .st-os {
+  margin-top: 14px;
+  border-radius: 9px;
+  opacity: 0.9;
+}
+
+/* chat list: time + unread */
+.cl-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+}
+.cl-meta time {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* tab bar unread badge */
+.tabbar .ico {
+  position: relative;
+}
+.tab-badge {
+  position: absolute;
+  top: -2px;
+  right: 6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--violet);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* stickers in the composer */
+.compose-sticker {
+  border: 0;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+.sticker-tray {
+  display: flex;
+  gap: 8px;
+  padding: 8px 10px;
+  overflow-x: auto;
+  background: var(--surface);
+  border-radius: 16px;
+  margin: 0 10px 6px;
+}
+.sticker-pick {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--surface2);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 6px;
+}
+.sticker-pick img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* voice room: a calmer hero */
+.voice-hero {
+  margin: 16px;
+  padding: 40px 24px;
+  border-radius: 28px;
+  text-align: center;
+  background: radial-gradient(120% 90% at 50% 0%, #7c3aed33, transparent 60%), var(--surface);
+}
+.voice-symbol {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  margin: 0 auto 14px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: linear-gradient(135deg, #7c3aed, #38bdf8);
+  box-shadow: 0 14px 40px #7c3aed55;
+}
+.voice-symbol svg {
+  width: 36px;
+  height: 36px;
+}
+.voice-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+}
+.voice-buttons .btn {
+  border-radius: 999px;
+  padding: 12px 20px;
+}
+
+/* community dialogs: rounder, closer to the app */
+#community-dialog {
+  border-radius: 22px;
+}
+
+/* light theme: main chat area, overlays and dialogs (their colours are fixed in the older CSS) */
+:root[data-theme='light'] .main,
+:root[data-theme='light'] .content-scroll,
+:root[data-theme='light'] .chat-scroll,
+:root[data-theme='light'] .messages {
+  background: var(--bg) !important;
+  color: var(--text);
+}
+:root[data-theme='light'] .main-header {
+  background: var(--side) !important;
+  color: var(--text);
+  border-bottom: 1px solid var(--line);
+}
+:root[data-theme='light'] .main *:not(img):not(.avatar):not(.avatar *):not(.tab-badge):not(.read-count):not(.role-pill):not(.st-pill):not(.pr-off):not(.btn):not(.send-button):not(.reaction-list *):not(.reaction-list):not(.st-ico):not(.st-switch):not(.st-bubble):not(.st-preview):not(.th-opt):not(.th-swatch):not(.sticker-pick):not(.sticker-tray):not(.st-save):not(.st-row):not(.st-profile):not(.pr-card):not(.st-about-card):not(.st-note):not(.st-group):not(.cl-chip):not(.compose-sticker):not(.fab),
+:root[data-theme='light'] .overlay *:not(img):not(.avatar):not(.avatar *):not(.btn):not(.st-ico):not(.st-switch):not(.st-save):not(.pr-card):not(.th-opt):not(.th-swatch),
+:root[data-theme='light'] #community-dialog *:not(img):not(.avatar):not(.avatar *):not(.btn) {
+  background-color: transparent !important;
+  color: inherit;
+}
+:root[data-theme='light'] .main .btn,
+:root[data-theme='light'] .overlay .btn,
+:root[data-theme='light'] #community-dialog .btn {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+:root[data-theme='light'] .main .btn.primary,
+:root[data-theme='light'] .overlay .btn.primary,
+:root[data-theme='light'] #community-dialog .btn.primary {
+  background: var(--violet);
+  color: #fff;
+  box-shadow: none;
+}
+:root[data-theme='light'] .main .btn.danger,
+:root[data-theme='light'] .overlay .btn.danger {
+  color: var(--red);
+}
+:root[data-theme='light'] .compose,
+:root[data-theme='light'] .compose-bar {
+  background: var(--bg) !important;
+}
+:root[data-theme='light'] .compose-bar {
+  background: var(--surface) !important;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+:root[data-theme='light'] .compose-bar textarea,
+:root[data-theme='light'] .form-fields input,
+:root[data-theme='light'] .form-fields textarea,
+:root[data-theme='light'] .form-fields select {
+  color: var(--text) !important;
+  background: var(--bg) !important;
+  border-color: var(--line) !important;
+}
+:root[data-theme='light'] .overlay .modal,
+:root[data-theme='light'] #community-dialog,
+:root[data-theme='light'] .modal {
+  background: var(--surface) !important;
+  color: var(--text);
+}
+:root[data-theme='light'] .message:hover {
+  background: #0000000a !important;
+}
+:root[data-theme='light'] .sticker-tray {
+  background: var(--surface);
+}
+
+:root[data-theme='light'] .st-group,
+:root[data-theme='light'] .st-note,
+:root[data-theme='light'] .pr-card {
+  background: var(--surface) !important;
+}
+:root[data-theme='light'] .st-group .st-row,
+:root[data-theme='light'] .st-group .st-row * {
+  background-color: transparent;
+}

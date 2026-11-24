@@ -1,0 +1,39 @@
+/* VoxelSpase 1.5 — Premium page: perks with tilt, animated banner outline PREVIEW (not applied to profiles). */
+@property --ang { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+
+.pr-hero { margin-top: 18px; padding: 22px; border-radius: 22px; background: radial-gradient(120% 90% at 0% 0%, rgba(124, 58, 237, .35), rgba(15, 23, 42, .4) 60%); box-shadow: inset 0 0 0 1px rgba(167, 139, 250, .3); display: flex; flex-direction: column; gap: 14px; animation: pr-in .6s cubic-bezier(.2, .8, .2, 1) both; }
+.pr-kicker { font-size: 12px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: #C4B5FD; }
+.pr-hero h3 { margin: 0; font-size: 24px; }
+.pr-perks { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+.pr-perk { position: relative; padding: 16px; border-radius: 18px; background: rgba(15, 23, 42, .6); box-shadow: inset 0 0 0 1px rgba(167, 139, 250, .25); display: flex; flex-direction: column; gap: 8px; transform: perspective(700px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .25s cubic-bezier(.2, .8, .2, 1), box-shadow .3s ease; will-change: transform; animation: pr-in .55s cubic-bezier(.2, .8, .2, 1) both; }
+.pr-perk:nth-child(2) { animation-delay: .08s; } .pr-perk:nth-child(3) { animation-delay: .16s; }
+.pr-perk:hover { box-shadow: inset 0 0 0 1px rgba(167, 139, 250, .6), 0 18px 36px rgba(0, 0, 0, .35); }
+.pr-perk h4 { margin: 0; font-size: 16px; }
+.pr-perk p { margin: 0; font-size: 14px; line-height: 1.5; color: #C4CBE6; }
+.pr-perk-ico { font-size: 26px; }
+.pr-perk-tag { align-self: flex-start; font-size: 11px; font-weight: 800; padding: 4px 8px; border-radius: 8px; background: rgba(124, 58, 237, .3); color: #DDD6FE; }
+.pr-banner-box { display: flex; flex-direction: column; gap: 12px; }
+.pr-banner-box h4 { margin: 0; font-size: 16px; }
+.pr-modes { display: flex; gap: 8px; flex-wrap: wrap; }
+.pr-mode { border: 0; border-radius: 999px; padding: 8px 14px; background: #1E1B4B; color: #C4CBE6; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .2s ease, color .2s ease; }
+.pr-mode.on { background: linear-gradient(120deg, #7C3AED, #38BDF8); color: #fff; }
+.pr-banner-sample { position: relative; height: 150px; border-radius: 20px; padding: 3px; background: transparent; isolation: isolate; }
+.pr-banner-inner { position: relative; height: 100%; border-radius: 17px; background: linear-gradient(135deg, #1E1B4B, #0F172A); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #F5F3FF; z-index: 1; }
+.pr-banner-inner b { font-size: 16px; }
+.pr-banner-inner > span:not(.pr-sample-av) { font-size: 12px; color: #A8B0D6; }
+.pr-banner-sample::before { content: ''; position: absolute; inset: 0; border-radius: 20px; z-index: 0; }
+/* run: a conic light travels around the frame */
+.pr-banner-sample[data-mode="run"]::before { background: conic-gradient(from var(--ang), #7C3AED, #A78BFA, #38BDF8, #7C3AED); animation: pr-spin 3.2s linear infinite; }
+/* glow: a soft halo that breathes */
+.pr-banner-sample[data-mode="glow"]::before { background: linear-gradient(120deg, #7C3AED, #38BDF8); }
+.pr-banner-sample[data-mode="glow"] { box-shadow: 0 0 24px rgba(124, 58, 237, .55), 0 0 60px rgba(56, 189, 248, .25); animation: pr-breath 2.6s ease-in-out infinite; }
+/* pulse: the frame opacity pulses */
+.pr-banner-sample[data-mode="pulse"]::before { background: linear-gradient(120deg, #A78BFA, #38BDF8, #A78BFA); animation: pr-pulse 1.8s ease-in-out infinite; }
+@keyframes pr-spin { to { --ang: 360deg; } }
+@keyframes pr-breath { 0%, 100% { box-shadow: 0 0 14px rgba(124, 58, 237, .4); } 50% { box-shadow: 0 0 34px rgba(124, 58, 237, .75), 0 0 70px rgba(56, 189, 248, .3); } }
+@keyframes pr-pulse { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .pr-hero, .pr-perk, .pr-banner-sample::before, .pr-banner-sample { animation: none !important; }
+  .pr-perk { transform: none !important; transition: none; }
+  .pr-banner-sample[data-mode="run"]::before { background: linear-gradient(120deg, #7C3AED, #38BDF8); }
+}

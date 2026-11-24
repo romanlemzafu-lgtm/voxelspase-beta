@@ -1,0 +1,74 @@
+/* VoxelSpase v1.3 — Voice Capsule.
+   A floating capsule for the current voice call. Decorative waves only: no microphone analysis.
+   Placed so it never covers the message composer or the header controls. */
+.capsule {
+  position: fixed;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px 6px 6px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, rgba(124, 58, 237, .92), rgba(56, 189, 248, .85));
+  color: #fff;
+  box-shadow: 0 14px 40px rgba(124, 58, 237, .45), inset 0 0 0 1px rgba(255, 255, 255, .18);
+  backdrop-filter: blur(12px);
+  max-width: min(440px, calc(100vw - 24px));
+  animation: cap-in .5s cubic-bezier(.2, .8, .2, 1) both;
+  transition: box-shadow .3s ease, border-radius .3s ease;
+}
+/* desktop: top-right, under the header, clear of the composer */
+@media (min-width: 721px) {
+  .capsule { top: 92px; right: 18px; }
+}
+/* phone, chat screens: top, under the header */
+@media (max-width: 720px) {
+  .capsule { top: calc(env(safe-area-inset-top, 0px) + 64px); left: 0; right: 0; margin: 0 auto; width: max-content; }
+  .shell[data-mobile='list'] .capsule {
+    top: auto;
+    bottom: calc(var(--tab-h) + 12px + env(safe-area-inset-bottom, 0px));
+    left: 12px;
+    right: auto;
+    margin: 0;
+    width: auto;
+    max-width: calc(100vw - 100px);
+  }
+}
+.cap-main { display: flex; align-items: center; gap: 10px; min-width: 0; border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; padding: 0; text-align: left; }
+.cap-av { width: 34px; height: 34px; flex: none; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 14px; background: rgba(255, 255, 255, .22); box-shadow: 0 0 0 2px rgba(255, 255, 255, .35); }
+.cap-text { display: flex; flex-direction: column; min-width: 0; }
+.cap-text b { font-size: 14px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
+.cap-text small { font-size: 12px; opacity: .85; white-space: nowrap; }
+/* decorative waves: gentle, not tied to any audio */
+.cap-wave { display: flex; align-items: center; gap: 3px; height: 22px; padding: 0 4px; }
+.cap-wave i { width: 3px; height: 8px; border-radius: 3px; background: rgba(255, 255, 255, .9); animation: cap-wave 1.6s ease-in-out infinite; }
+.cap-wave i:nth-child(1) { animation-delay: -.2s; }
+.cap-wave i:nth-child(2) { animation-delay: -.7s; height: 14px; }
+.cap-wave i:nth-child(3) { animation-delay: -.4s; height: 20px; }
+.cap-wave i:nth-child(4) { animation-delay: -1s; height: 12px; }
+.cap-wave i:nth-child(5) { animation-delay: -.5s; }
+.cap-btn { width: 34px; height: 34px; flex: none; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .18); color: #fff; font-size: 15px; cursor: pointer; transition: transform .15s ease, background .2s ease; display: grid; place-items: center; }
+.cap-btn:hover { background: rgba(255, 255, 255, .3); }
+.cap-btn:active { transform: scale(.92); }
+.cap-btn.off { background: rgba(15, 23, 42, .45); }
+.cap-btn.danger { background: rgba(190, 18, 60, .75); }
+.cap-btn:focus-visible, .cap-main:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.cap-note { margin: 0; flex-basis: 100%; font-size: 12px; line-height: 1.4; opacity: .92; padding: 2px 8px 2px 44px; }
+.capsule.is-open { border-radius: 22px; flex-wrap: wrap; }
+/* subtle breathing so the capsule feels alive */
+.capsule::after { content: ''; position: absolute; inset: -4px; border-radius: inherit; border: 1px solid rgba(167, 139, 250, .55); animation: cap-pulse 3.2s ease-out infinite; pointer-events: none; }
+@keyframes cap-in { from { opacity: 0; transform: translateY(-10px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes cap-wave { 0%, 100% { transform: scaleY(.45); } 50% { transform: scaleY(1); } }
+@keyframes cap-pulse { 0% { opacity: .7; transform: scale(1); } 100% { opacity: 0; transform: scale(1.12); } }
+@media (prefers-reduced-motion: reduce) {
+  .capsule, .capsule::after, .cap-wave i { animation: none !important; }
+  .cap-wave i { transform: scaleY(.7); }
+  .capsule, .cap-btn { transition: none !important; }
+}
+
+/* referral card (honest placeholder: no rewards are granted yet) */
+.ref-card { margin-top: 16px; padding: 18px; border-radius: 18px; background: rgba(30, 27, 75, .6); box-shadow: inset 0 0 0 1px rgba(167, 139, 250, .35); display: flex; flex-direction: column; gap: 8px; }
+.ref-card h3 { margin: 0; font-size: 18px; }
+.ref-card p, .ref-card li { font-size: 14px; line-height: 1.5; color: #C4CBE6; margin: 0; }
+.ref-card ul { margin: 4px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+.ref-card .btn[disabled] { opacity: .6; cursor: not-allowed; align-self: flex-start; margin-top: 6px; }

@@ -1,0 +1,38 @@
+/* VoxelSpase 1.11 — «Персик»: тёплая светлая скин-тема (вариант, по умолчанию не включена).
+   Палитра из референса, оттенки подобраны под контраст текста. */
+:root[data-skin='peach'] {
+  --bg: #efebe8;          /* основная область */
+  --side: #ead6ca;        /* боковая панель, тёплый песок */
+  --surface: #f7f4f2;     /* карточки */
+  --surface2: #e6ddd7;    /* hover и вторичные поля */
+  --text: #2b2230;        /* основной текст */
+  --muted: #6f6470;       /* вторичный текст */
+  --line: #d8cbc2;
+  --violet: #c94a33;      /* терракотовый акцент (кнопки, активные вкладки) */
+  --lilac: #9a3d2b;
+  --blue: #e8a66b;        /* персиковая подсветка */
+  --cl-row-active: #3d3340; /* выбранный чат: тёмная слива, как в референсе */
+  --cl-row-hover: #e6ddd7;
+}
+:root[data-skin='peach'] body { background: #efebe8; }
+:root[data-skin='peach'] .chat-row.selected { color: #f7f4f2; }
+:root[data-skin='peach'] .chat-row.selected .cl-sub,
+:root[data-skin='peach'] .chat-row.selected .cl-line b { color: #f7f4f2; }
+:root[data-skin='peach'] .cl-chip.active { background: #3d3340; color: #f7f4f2; }
+:root[data-skin='peach'] .btn.primary,
+:root[data-skin='peach'] .fab,
+:root[data-skin='peach'] .st-save {
+  background: #c94a33; color: #fff; box-shadow: 0 10px 24px rgba(201, 74, 51, .25);
+}
+:root[data-skin='peach'] .cl-search,
+:root[data-skin='peach'] .cl-chip { background: #f7f4f2; }
+:root[data-skin='peach'] .cl-chip { color: #2b2230; }
+:root[data-skin='peach'] .tabbar .ico { background: #3d3340; color: #f7f4f2; }
+:root[data-skin='peach'] .st-group,
+:root[data-skin='peach'] .pr-card,
+:root[data-skin='peach'] .keep-card {
+  box-shadow: 0 1px 0 rgba(43, 34, 48, .04), 0 12px 28px rgba(201, 74, 51, .08);
+}
+
+:root[data-skin='peach'] .send-button { background: #c94a33; color: #fff; }
+:root[data-skin='peach'] .cl-hash { background: linear-gradient(135deg, #c94a33, #e8a66b); }

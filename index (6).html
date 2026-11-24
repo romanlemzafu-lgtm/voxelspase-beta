@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+    <meta name="theme-color" content="#0F172A" />
+    <meta name="description" content="VoxelSpase от OneSpase — серверы, друзья и голосовые комнаты." />
+    <title>VoxelSpase</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/logo.svg" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./styles.css?v=05" />
+    <script defer src="./vendor/supabase.js"></script>
+    <script defer src="./config.js?v=05"></script>
+    <script defer src="./voice.js?v=05"></script>
+    <script defer src="./identity.js?v=15"></script>
+    <script defer src="./start.js?v=05"></script>
+    <script defer src="./social.js?v=15"></script>
+    <script defer src="./auth-flow.js?v=15"></script>
+  <script defer src="./app.js?v=111"></script>
+    <link rel="stylesheet" href="./community.css?v=05" />
+    <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <link rel="stylesheet" href="./social.css?v=05">
+  <link rel="stylesheet" href="./v06.css?v=06">
+  <link rel="stylesheet" href="./v07.css?v=07">
+  <link rel="stylesheet" href="./v08.css?v=08">
+  <link rel="stylesheet" href="./v09.css?v=09">
+  <link rel="stylesheet" href="./v10.css?v=10">
+  <link rel="stylesheet" href="./v11.css?v=13">
+  <link rel="stylesheet" href="./v12.css?v=14">
+  <link rel="stylesheet" href="./v14.css?v=14">
+  <link rel="stylesheet" href="./v15.css?v=15">
+  <link rel="stylesheet" href="./v16.css?v=111">
+  <link rel="stylesheet" href="./v17.css?v=111">
+  <link rel="stylesheet" href="./auth-v2.css?v=15">
+</head>
+  <body>
+    <div id="app">
+      <div class="splash" role="status" aria-live="polite" aria-label="Загрузка VoxelSpase">
+        <div class="splash-stage">
+          <div class="sp-glow" aria-hidden="true"></div>
+          <svg class="sp-logo" viewBox="0 0 128 128" aria-hidden="true">
+            <defs>
+              <linearGradient id="sp-bg" x1="0" x2="1" y1="0" y2="1">
+                <stop stop-color="#7C3AED"/><stop offset="1" stop-color="#2563EB"/>
+              </linearGradient>
+            </defs>
+            <rect class="sp-base" width="128" height="128" rx="33" fill="url(#sp-bg)"/>
+            <path class="sp-tile sp-top" d="M27 37 64 58 101 37 64 16Z" fill="#D4CCFF"/>
+            <path class="sp-tile sp-left" d="M27 37v45l37 22V58Z" fill="#F3E8FF"/>
+            <path class="sp-tile sp-right" d="M101 37v45l-37 22V58Z" fill="#B7A4FF"/>
+            <path class="sp-line" pathLength="1" d="m44 51 20 12 20-12" stroke="#6D28D9" stroke-width="5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div class="sp-word" aria-label="VoxelSpase"><span>V</span><span>o</span><span>x</span><span>e</span><span>l</span><span>S</span><span>p</span><span>a</span><span>s</span><span>e</span></div>
+          <div class="sp-bar" aria-hidden="true"><i></i></div>
+        </div>
+        <p class="splash-status">Подключаемся…</p>
+        <div class="sp-credit"><img src="./assets/onespase-bw.png" alt="" width="26" height="26"><span>by OneSpase</span></div>
+      </div>
+    </div>
+    <div id="remote-audio" hidden></div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <noscript>Для работы VoxelSpase включи JavaScript.</noscript>
+    <dialog id="community-dialog" aria-labelledby="v4-title">
+      <header>
+        <h1 id="v4-title"></h1>
+        <button type="button" data-v4="close" class="plain-icon" aria-label="Закрыть">×</button>
+      </header>
+      <p class="v4-status" role="status"></p>
+      <div class="v4-content"></div>
+    </dialog>
+    <aside id="network-notice" hidden aria-label="Информация о подключении">
+      <p>
+        В некоторых сетях VoxelSpase может работать нестабильно или быть недоступен. Для подключения иногда
+        может потребоваться VPN. Если сайт работает нормально, дополнительных действий не требуется.
+      </p>
+      <button class="btn small" type="button">Понятно</button>
+    </aside>
+  <dialog id="social-info"><h2></h2><p></p><form method="dialog"><button class="btn">Закрыть</button></form></dialog>
+</body>
+</html>

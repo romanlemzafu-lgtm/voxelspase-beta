@@ -1,0 +1,100 @@
+/* VoxelSpase 1.7 — «Закат»: сочная розово-жёлто-фиолетовая скин-тема поверх тёмной базы.
+   Не копия чужих логотипов или названий, только палитра и настроение. */
+:root[data-skin='sunset'] {
+  --bg: #14052a;
+  --side: #1d0838;
+  --surface: #2a0d48;
+  --surface2: #3a1260;
+  --line: #5a1f7a;
+  --text: #fff6e0;
+  --muted: #f0a8d0;
+  --violet: #ff4fa3;
+  --lilac: #ffd166;
+  --blue: #ff8a3d;
+  --cl-row-active: #5a1f7a;
+  --cl-row-hover: #3a1260;
+}
+:root[data-skin='sunset'] body {
+  background: radial-gradient(120% 80% at 50% -10%, #ff8a3d55 0%, transparent 55%), radial-gradient(100% 70% at 100% 100%, #ff4fa355 0%, transparent 60%), #14052a;
+}
+/* the sunset strip under the header */
+:root[data-skin='sunset'] .main-header,
+:root[data-skin='sunset'] .cl-top {
+  border-bottom: 0;
+  background: linear-gradient(90deg, #ffd166 0%, #ff8a3d 35%, #ff4fa3 70%, #8b2cf5 100%) top / 100% 3px no-repeat, var(--side);
+}
+/* chat list: gradient selection */
+:root[data-skin='sunset'] .chat-row.selected {
+  background: linear-gradient(90deg, #ff4fa3, #8b2cf5);
+  box-shadow: 0 0 0 1px #ffd166 inset;
+}
+:root[data-skin='sunset'] .cl-chip.active,
+:root[data-skin='sunset'] .kchip.on {
+  background: linear-gradient(120deg, #ffd166, #ff4fa3 60%, #8b2cf5);
+  color: #14052a;
+}
+/* primary buttons */
+:root[data-skin='sunset'] .btn.primary,
+:root[data-skin='sunset'] .st-save,
+:root[data-skin='sunset'] .fab,
+:root[data-skin='sunset'] .send-button {
+  background: linear-gradient(120deg, #ffd166 0%, #ff8a3d 40%, #ff4fa3 75%, #8b2cf5 100%) !important;
+  color: #14052a !important;
+  box-shadow: 0 10px 28px rgba(255, 79, 163, .45);
+}
+/* tab bar active pill */
+:root[data-skin='sunset'] .tabbar .ico { background: linear-gradient(120deg, #ff4fa3, #8b2cf5); color: #fff6e0; }
+/* settings cards get a soft glow */
+:root[data-skin='sunset'] .st-group,
+:root[data-skin='sunset'] .pr-card,
+:root[data-skin='sunset'] .keep-card {
+  box-shadow: 0 0 0 1px rgba(255, 209, 102, .18), 0 18px 40px rgba(255, 79, 163, .15);
+}
+/* section titles in the sunset tones */
+:root[data-skin='sunset'] .st-group-title,
+:root[data-skin='sunset'] .kick {
+  background: linear-gradient(90deg, #ffd166, #ff4fa3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* a touch of motion: the strip gently shifts (off for reduced motion) */
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-skin='sunset'] .main-header { background-size: 100% 3px, auto; }
+}
+.th-grid { grid-template-columns: repeat(4, 1fr); }
+.th-sunset { background: linear-gradient(135deg, #ffd166, #ff4fa3 60%, #8b2cf5); }
+
+/* Display font for the sunset skin: DejaVu Sans Bold (free, self-hosted, licence in assets/fonts/LICENSE_DEJAVU).
+   To switch to another font later, replace the file and the family list here. */
+@font-face {
+  font-family: 'VS Display';
+  src: url('./assets/fonts/DejaVuSans-Bold.ttf') format('truetype');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+:root[data-skin='sunset'] h1,
+:root[data-skin='sunset'] h2,
+:root[data-skin='sunset'] .main-header b,
+:root[data-skin='sunset'] .cl-brand b {
+  font-family: 'VS Display', system-ui, sans-serif;
+  letter-spacing: -0.2px;
+}
+
+/* v1.9: own theme editor */
+.th-grid { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
+.th-custom { background: conic-gradient(#7c3aed, #38bdf8, #f472b6, #facc15, #7c3aed); }
+.cust-panel { display: flex; flex-direction: column; gap: 12px; padding: 14px; border-radius: 16px; background: var(--surface); }
+.cust-field { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 15px; color: var(--text); }
+.cust-field input[type="color"] { width: 56px; height: 36px; border: 0; border-radius: 10px; background: none; padding: 0; cursor: pointer; }
+.cust-hint { margin: 0; font-size: 13px; color: var(--muted); }
+.cust-warn { margin: 0; font-size: 13px; color: #fca5a5; }
+.cust-actions { display: flex; justify-content: flex-end; }
+
+/* v1.10: one menu behind the + button */
+.plus-wrap { position: relative; display: inline-flex; }
+.plus-menu { position: absolute; top: 42px; right: 0; min-width: 230px; z-index: 40; background: var(--side); border: 1px solid var(--line); border-radius: 14px; padding: 6px; box-shadow: 0 18px 40px rgba(0, 0, 0, .45); display: flex; flex-direction: column; animation: ap-in .18s ease both; }
+.plus-menu button { display: block; width: 100%; text-align: left; padding: 10px 12px; border: 0; background: none; color: var(--text); border-radius: 10px; font: inherit; font-size: 14px; cursor: pointer; }
+.plus-menu button:hover, .plus-menu button:focus-visible { background: var(--surface2); outline: none; }
+@keyframes ap-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
